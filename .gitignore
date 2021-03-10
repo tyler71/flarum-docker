@@ -1,0 +1,6 @@
+.env
+.dockerignore
+
+*.swp
+data/
+.localconfig
