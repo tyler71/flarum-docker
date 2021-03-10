@@ -19,6 +19,7 @@ services:
       INSTALL:         "${INSTALL}"
       PUID_ID:         ${PUID_ID}
       HOSTNAME:        https://${HOSTNAME}
+      EXTIVERSE_TOKEN: ${EXTIVERSE_TOKEN}
       MYSQL_DATABASE:  ${MYSQL_DATABASE}
       MYSQL_USER:      ${MYSQL_USER}
       MYSQL_PASSWORD:  ${MYSQL_PASSWORD}

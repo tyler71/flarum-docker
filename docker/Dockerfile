@@ -6,8 +6,8 @@ WORKDIR /app
 RUN composer create-project flarum/flarum . --stability=beta
 COPY .null composer.* ./
 
-RUN if [ ! -z ${var+x} ]; then composer config --global --auth bearer.extiverse.com $EXTIVERSE_TOKEN; fi
-RUN composer install
+RUN if [ -z ${EXTIVERSE_TOKEN+x} ]; then composer config --global --auth bearer.extiverse.com $EXTIVERSE_TOKEN; fi \
+ && composer install
 
 
 # ========== Setup webserver
@@ -34,6 +34,7 @@ WORKDIR /app
 
 # ========== Setup dev
 FROM production as dev
+ARG EXTIVERSE_TOKEN
 
 RUN usermod -s /bin/bash application
-RUN if [ ! -z ${var+x} ]; then composer config --global --auth bearer.extiverse.com $EXTIVERSE_TOKEN; fi
+RUN if [ -z ${EXTIVERSE_TOKEN+x} ]; then composer config --global --auth bearer.extiverse.com $EXTIVERSE_TOKEN; fi
