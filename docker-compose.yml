@@ -7,9 +7,12 @@ services:
       target: dev
       args:
         - EXTIVERSE_TOKEN=${EXTIVERSE_TOKEN}
-    labels:
-      caddy: "${HOSTNAME}"
-      caddy.reverse_proxy: "{{ upstreams 80 }}"
+#   labels:
+#     caddy: "${HOSTNAME}"
+#     caddy.reverse_proxy: "{{ upstreams 80 }}"
+    ports:
+#     - 8080:80
+      - 4443:443
     volumes:
       - "./data/forum/conf:/conf"
       - "./data/forum/data/storage/sessions:/app/storage/sessions"
@@ -28,7 +31,7 @@ services:
         condition: "service_healthy"
     networks:
       - internal
-      - caddy
+      - public
   db:
     image: mariadb:10.3
     environment:
@@ -49,5 +52,5 @@ services:
 
 networks:
   internal:
-  caddy:
-    external: true
+# public:
+#   external: true
