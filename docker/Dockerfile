@@ -2,12 +2,14 @@
 FROM webdevops/php-nginx:7.3 as builder
 ARG EXTIVERSE_TOKEN
 
+USER application
 WORKDIR /app
+
 RUN composer create-project flarum/flarum . --stability=beta
 COPY .null composer.* ./
 
-RUN if [ -n "$EXTIVERSE_TOKEN" ]; then composer config --global --auth bearer.extiverse.com "$EXTIVERSE_TOKEN"; fi \
- && composer install
+RUN if [ -n "$EXTIVERSE_TOKEN" ]; then composer config --global --auth bearer.extiverse.com "$EXTIVERSE_TOKEN"; fi
+RUN composer install
 
 
 # ========== Setup webserver
@@ -20,10 +22,10 @@ ENV PHP_DISMOD='amqp,apcu,bcmath,bz2,calendar,exif,gettext,imagick,imap,intl,ion
 
 VOLUME /app/public/assets
 
-COPY --from=builder /app /app
-
 # COPY entrypoint script
 COPY forum_config/forum_setup.sh /opt/docker/provision/entrypoint.d/50-forum_setup.sh
+
+COPY --from=builder /app /app
 
 WORKDIR /app
 
