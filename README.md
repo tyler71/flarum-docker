@@ -1,6 +1,8 @@
 # Flarum Docker
 
-[![asciicast](https://asciinema.org/a/QIWV9GTc4zmi4qjDj9W3HxJ92.svg)](https://asciinema.org/a/QIWV9GTc4zmi4qjDj9W3HxJ92)
+<p align="center">
+  <a href="https://asciinema.org/a/QIWV9GTc4zmi4qjDj9W3HxJ92"><img width="60%" src="https://user-images.githubusercontent.com/4926565/110992620-02e00400-832b-11eb-922f-0a890759916c.png" /></a>
+</p>
 
 Make sure to have these installed
 
