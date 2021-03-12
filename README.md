@@ -1,5 +1,7 @@
 # Flarum Docker
 
+[![asciicast](https://asciinema.org/a/QIWV9GTc4zmi4qjDj9W3HxJ92.svg)](https://asciinema.org/a/QIWV9GTc4zmi4qjDj9W3HxJ92)
+
 Make sure to have these installed
 
 * [docker](https://docs.docker.com/engine/install/)
